@@ -19,11 +19,7 @@ router.get('/last',function(req, res, next){
   var fileName = 'last.jpg';
   res.sendFile(fileName, options, function (err) {
     if (err) {
-      console.log(err);
       res.status(err.status).end();
-    }
-    else {
-      console.log('Sent:', fileName);
     }
   });
 });
