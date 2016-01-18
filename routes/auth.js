@@ -3,10 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var util = require('util');
 var WindowsLiveStrategy = require('passport-windowslive').Strategy;
-var security = require('../auth-util.js');
-
-var WINDOWS_LIVE_CLIENT_ID = "000000004018003E";
-var WINDOWS_LIVE_CLIENT_SECRET = "Ndy8yIWQlO9ZcIVVFznn6gm9kG8eU8Hy";
+var security = require('../auth-util');
+var keys = require('../secret/authkeys');
 
 router.get('/test', security.ensureAuthenticated, function(req, res){
     res.send('the test page');
@@ -18,13 +16,13 @@ router.get('/windowslive',
     // The request will be redirected to Windows Live for authentication, so
     // this function will not be called.
   });
-  
-router.get('/windowslive/callback', 
+
+router.get('/windowslive/callback',
   passport.authenticate('windowslive', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect(req.session.returnTo || '/');
 });
-  
+
 router.get('/account', security.ensureAuthenticated, function(req, res){
     res.send('the account page');
   //res.render('account', { user: req.user });
@@ -50,8 +48,8 @@ passport.deserializeUser(function(obj, done){
 });
 
 passport.use(new WindowsLiveStrategy({
-    clientID: WINDOWS_LIVE_CLIENT_ID,
-    clientSecret: WINDOWS_LIVE_CLIENT_SECRET,
+    clientID: keys.windowslive.id,
+    clientSecret: keys.windowslive.secret,
     callbackURL: "http://node.octono.com:3000/auth/windowslive/callback"
   },
   function(accessToken, refreshToken, profile, done) {

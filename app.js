@@ -14,14 +14,13 @@ var users = require('./routes/users');
 
 var app = express();
 
-
 // session
 app.use(session({
   genid: function(req) {
-    return uuid.v4()
+    return uuid.v4();
   },
   secret: 'super secret keyboard cat on a mission'
-}))
+}));
 
 
 // view engine setup
