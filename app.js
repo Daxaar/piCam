@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var uuid = require('uuid');
+var live = require('./auth/live')();
 
 var auth = require('./routes/auth');
 var routes = require('./routes/index');
@@ -37,6 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser((user, done) => done(null,user));
+passport.deserializeUser((obj, done) => done(null,obj));
 
 app.use('/', routes);
 app.use('/users', users);
