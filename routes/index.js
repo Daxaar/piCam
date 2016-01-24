@@ -12,7 +12,8 @@ router.get('/last',function(req, res, next){
     dotfiles: 'deny',
     headers: {
         'x-timestamp': Date.now(),
-        'x-sent': true
+        'x-sent': true,
+        'cache-control':'no-cache'
     }
   };
 
