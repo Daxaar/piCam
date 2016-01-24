@@ -7,3 +7,14 @@ block content
       a(href="/auth/windowslive") Windows Live
     li
       a(href="/auth/google") Google (arriving soon!)
+  
+  form(action="/auth/local", method="POST")
+    p
+      label email
+      input(type='text', name='username')
+    p
+      label password
+      input(type='text', name='password')
+    p
+      input(type='submit', value="Go!")
+      //- <input type="submit" value="post"/>

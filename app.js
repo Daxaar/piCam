@@ -7,7 +7,12 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var uuid = require('uuid');
-var live = require('./auth/live')();
+
+//Move to separate auth route with only live routes in so we ensure
+//correct strategy is loaded when user hits URL having selected on login page.
+//var live = require('./auth/live')();
+
+var local = require('./auth/local');
 
 var auth = require('./routes/auth');
 var routes = require('./routes/index');
