@@ -1,4 +1,7 @@
 extends layout
 
 block content
-  h1 last accessed on #{time}
+  p
+    Last Modified #{modified}
+    a.btn.btn-primary(href="last") Refresh
+  img(src="images/last.jpg")
