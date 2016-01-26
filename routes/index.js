@@ -8,10 +8,11 @@ router.get('/login',(req,res) => {
 });
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-
-  res.render('index', { title: 'Express' });
+router.get('/', security.ensureAuthenticated, function(req, res, next) {
+  res.render('index', { title: 'Express', user: req.user});
 });
+
+router.get('/logout',(req,res) => res.redirect('/auth/logout'));
 
 router.get('/last', security.ensureAuthenticated, function(req, res, next){
   fs.stat('public/images/last.jpg',function (err, stats) {
