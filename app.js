@@ -8,15 +8,14 @@ var passport = require('passport');
 var session = require('express-session');
 var uuid = require('uuid');
 
-//Move to separate auth route with only live routes in so we ensure
-//correct strategy is loaded when user hits URL having selected on login page.
-//var live = require('./auth/live')();
-
-var local = require('./auth/local');
+var local = require('./auth/local')();
+var live = require('./auth/live')();
+var secure = require('./auth/secure');
 
 var auth = require('./routes/auth');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var last = require('./routes/last');
 
 var app = express();
 
@@ -40,6 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/secure', express.static(path.join(__dirname, 'public/secure')));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,9 +47,16 @@ app.use(passport.session());
 passport.serializeUser((user, done) => done(null,user));
 passport.deserializeUser((obj, done) => done(null,obj));
 
+app.use('/secure/*.jpg',secure);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth',auth);
+app.use('/last',last);
+
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

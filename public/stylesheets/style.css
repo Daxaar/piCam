@@ -4,5 +4,9 @@ body {
 
 img {
   /*Resize image for viewport*/
-  max-width:100%
+  max-width:100%;
+}
+
+.welcome {
+  float:right;
 }

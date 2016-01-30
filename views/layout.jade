@@ -1,9 +1,12 @@
 doctype html
-html
+html(lang="en")
   head
     title= title
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
   body
+    //- //How to I get access to the user in here for ALL requests?
+    if(locals.user)
+      div.welcome Hi #{user.name}
     block content

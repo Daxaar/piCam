@@ -1,10 +1,9 @@
-
 //Windows Live Passport Strategy with keys pulled from uncommited source
-module.exports = function (){
-    var passport = require('passport');
-    var keys = require('../secret/authkeys');
+var passport = require('passport');
+var keys = require('../secret/authkeys');
+var WindowsLiveStrategy = require('passport-windowslive').Strategy;
 
-    var WindowsLiveStrategy = require('passport-windowslive').Strategy;
+module.exports = function (){
 
     passport.use(new WindowsLiveStrategy({
         clientID: keys.windowslive.id,
@@ -16,5 +15,5 @@ module.exports = function (){
         return done(null, profile);
         });
     }
-    ));
+  ));
 };
