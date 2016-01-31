@@ -1,0 +1,109 @@
+extends layout
+block content
+
+  .container
+    .onl_login
+      h3.onl_authTitle(data-toggle='tooltip', data-placement='bottom', title='Recommended: Lumen Theme')
+        | Login or 
+        a(href='#') Sign up
+      .row.onl_row-sm-offset-3.onl_socialButtons
+        .col-xs-2.col-sm-2
+          a.btn.btn-lg.btn-block.onl_btn-facebook(href='/auth/facebook', data-toggle='tooltip', data-placement='top', title='Facebook')
+            i.fa.fa-facebook.fa-2x
+            span.hidden-xs
+        .col-xs-2.col-sm-2
+          a.btn.btn-lg.btn-block.onl_btn-twitter(href='/auth/twitter', data-toggle='tooltip', data-placement='top', title='Twitter')
+            i.fa.fa-twitter.fa-2x
+            span.hidden-xs
+        .col-xs-2.col-sm-2
+          a.btn.btn-lg.btn-block.onl_btn-google-plus(href='/auth/google', data-toggle='tooltip', data-placement='top', title='Google Plus')
+            i.fa.fa-google-plus.fa-2x
+            span.hidden-xs
+      //- br
+      //- .row.onl_row-sm-offset-3.onl_socialButtons
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-github(href='#', data-toggle='tooltip', data-placement='top', title='GitHub')
+      //-       i.fa.fa-github.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-soundcloud(href='#', data-toggle='tooltip', data-placement='top', title='SoundCloud')
+      //-       i.fa.fa-soundcloud.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-steam(href='#', data-toggle='tooltip', data-placement='top', title='Steam')
+      //-       i.fa.fa-steam.fa-2x
+      //-       span.hidden-xs
+      //- br
+      //- .row.onl_row-sm-offset-3.onl_socialButtons
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-pinterest(href='#', data-toggle='tooltip', data-placement='top', title='Pinterest')
+      //-       i.fa.fa-pinterest.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-vimeo(href='#', data-toggle='tooltip', data-placement='top', title='Vimeo')
+      //-       i.fa.fa-vimeo-square.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-lastfm(href='#', data-toggle='tooltip', data-placement='top', title='Lastfm')
+      //-       i.fa.fa-lastfm.fa-2x
+      //-       span.hidden-xs
+      //- br
+      //- .row.onl_row-sm-offset-3.onl_socialButtons
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-yahoo(href='#', data-toggle='tooltip', data-placement='top', title='Yahoo')
+      //-       i.fa.fa-yahoo.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-vk(href='#', data-toggle='tooltip', data-placement='top', title='VKontakte')
+      //-       i.fa.fa-vk.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-spotify(href='#', data-toggle='tooltip', data-placement='top', title='Spotify')
+      //-       i.fa.fa-spotify.fa-2x
+      //-       span.hidden-xs
+      //- br
+      //- .row.onl_row-sm-offset-3.onl_socialButtons
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-linkedin(href='#', data-toggle='tooltip', data-placement='top', title='LinkedIn')
+      //-       i.fa.fa-linkedin.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-stumbleupon(href='#', data-toggle='tooltip', data-placement='top', title='Stumble Upon')
+      //-       i.fa.fa-stumbleupon.fa-2x
+      //-       span.hidden-xs
+      //-   .col-xs-2.col-sm-2
+      //-     a.btn.btn-lg.btn-block.onl_btn-tumblr(href='#', data-toggle='tooltip', data-placement='top', title='Tumblr')
+      //-       i.fa.fa-tumblr.fa-2x
+      //-       span.hidden-xs
+      .row.onl_row-sm-offset-3.onl_loginOr
+        .col-xs-12.col-sm-6
+          hr.onl_hrOr
+          span.onl_spanOr or
+      .row.onl_row-sm-offset-3
+        .col-xs-12.col-sm-6
+          form.onl_loginForm(action='/auth/local', autocomplete='off', method='POST')
+            .input-group
+              span.input-group-addon
+                span.glyphicon.glyphicon-user
+              input.form-control(type='text', name='username', placeholder='Username')
+            span.help-block
+            .input-group
+              span.input-group-addon
+                span.glyphicon.glyphicon-lock
+              input.form-control(type='password', name='password', placeholder='Password')
+            span.help-block Password Error!
+            button.btn.btn-lg.btn-primary.btn-block(type='submit')
+              i.fa.fa-sign-in
+              |  Login
+      .row.onl_row-sm-offset-3
+        .col-xs-12.col-sm-3
+          label.checkbox.pull-left
+            input(type='checkbox', value='remember-me')
+            | Remember Me
+        .col-xs-12.col-sm-3
+          p.onl_forgotPwd
+            a(href='#') Forgot password?
+  script.
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })

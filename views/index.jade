@@ -1,6 +1,32 @@
 extends layout
 
 block content
-  h1= title
-  if locals.user.name
-    p Welcome to #{title} #{user.name}
+  dl
+    dt What is this site?
+      dd A simple express website that was built originally to host the 
+        | last image captured by my Raspberry Pi security webcam, so I 
+        | could view it over the net on various devices with limited internet.
+    dt Seriously?  You built a website just for that?
+      dd No not really.  It's just one of the many sites I've
+        | built whilst learning 
+        a(href="http://expressjs.com") express
+        |.  Yes of course it's totally over the
+        | top for what it does but when I'm brushing up on a new stack I can
+        | focus better when there is a purpose to what I'm building.  And let's
+        | face it, does the world really need another TODO app?
+    dt Can I use the live site?
+      dd Sorry, no.  The image(s) are only of my front driveway anyway.  Plus, 
+        | if I let everyone in there wouldn't have been much point in my learning 
+        a(href="http://www.passportjs.com") passportjs.
+    dt Can I get the source code?
+      dd Absolutely.  It's available on 
+        a(href="http://www.github.com/daxaar/picam") github.
+    dt What might I learn from the source?
+      ul
+        li express routing
+        li multiple passportjs strategy usage
+        li development workflow using
+          ul
+            li gulp
+            li browser-sync
+            li node-mon

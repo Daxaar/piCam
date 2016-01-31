@@ -12,7 +12,7 @@ module.exports = function(){
       // var hash = bcrypt.genSalt(password,
       //   (err, salt) => bcrypt.hash('B4c0/\/', salt,
       //     (err, hash) => console.log(hash)));
-      if(username === 'me@here.com' && password === 'thecorrectpassword') {
+      if(username === 'a' && password === 'a') {
         let dummyUser = {email:'me@here.com',name:'Joe Bloggs'};
         return done(null,dummyUser);
       } else {

@@ -9,10 +9,7 @@ var localStrategy = require('../auth/local')();
 
 router.post('/local',
             passport.authenticate('local'),
-            (req,res) => {
-              if(req.session.returnTo)
-                res.redirect(req.session.returnTo || '/');
-            });
+            (req,res) => res.redirect(req.session.returnTo || '/'));
 
 router.get('/logout',(req,res) => {
   req.logout();
@@ -34,5 +31,12 @@ router.get('/windowslive/callback',
   function(req, res) {
     res.redirect(req.session.returnTo || '/');
 });
+
+function soon(req,res,next) {
+  res.send('coming soon...');
+}
+router.get('/facebook',soon);
+router.get('/twitter',soon);
+router.get('/google',soon);
 
 module.exports = router;

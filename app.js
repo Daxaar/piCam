@@ -34,29 +34,39 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/secure', express.static(path.join(__dirname, 'public/secure')));
+app.use('/fonts', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/fonts')));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser((user, done) => done(null,user));
-passport.deserializeUser((obj, done) => done(null,obj));
+passport.serializeUser((user, done) => {
+  console.log('serialize...');
+  console.log(user);
+  done(null,user);
+});
+
+passport.deserializeUser((obj, done) => {
+  console.log('deserialize...');
+  console.log(obj);
+  done(null,obj);
+});
+
+app.use((req, res, next) => {
+  res.locals.user = req.user || {};
+  next();
+});
 
 app.use('/secure/*.jpg',secure);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth',auth);
 app.use('/last',last);
-
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-});
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

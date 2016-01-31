@@ -1,20 +1,53 @@
 extends layout
-
 block content
-  h1 Login using one of the following providers
-  ul
-    li
-      a(href="/auth/windowslive") Windows Live
-    li
-      a(href="/auth/google") Google (arriving soon!)
-  
-  form(action="/auth/local", method="POST")
-    p
-      label email
-      input(type='text', name='username')
-    p
-      label password
-      input(type='text', name='password')
-    p
-      input(type='submit', value="Go!")
-      //- <input type="submit" value="post"/>
+
+  .container
+    .onl_login
+      h3.onl_authTitle(data-toggle='tooltip', data-placement='bottom', title='Recommended: Lumen Theme')
+        | Login or 
+        a(href='#') Sign up
+      .row.onl_row-sm-offset-3.onl_socialButtons
+        .col-xs-2.col-sm-2
+          a.btn.btn-lg.btn-block.onl_btn-facebook(href='/auth/facebook', data-toggle='tooltip', data-placement='top', title='Facebook')
+            i.fa.fa-facebook.fa-2x
+            span.hidden-xs
+        .col-xs-2.col-sm-2
+          a.btn.btn-lg.btn-block.onl_btn-twitter(href='/auth/twitter', data-toggle='tooltip', data-placement='top', title='Twitter')
+            i.fa.fa-twitter.fa-2x
+            span.hidden-xs
+        .col-xs-2.col-sm-2
+          a.btn.btn-lg.btn-block.onl_btn-google-plus(href='/auth/google', data-toggle='tooltip', data-placement='top', title='Google Plus')
+            i.fa.fa-google-plus.fa-2x
+            span.hidden-xs
+      .row.onl_row-sm-offset-3.onl_loginOr
+        .col-xs-12.col-sm-6
+          hr.onl_hrOr
+          span.onl_spanOr or
+      .row.onl_row-sm-offset-3
+        .col-xs-12.col-sm-6
+          form.onl_loginForm(action='/auth/local', autocomplete='off', method='POST')
+            .input-group
+              span.input-group-addon
+                span.glyphicon.glyphicon-user
+              input.form-control(type='text', name='username', placeholder='Username')
+            span.help-block
+            .input-group
+              span.input-group-addon
+                span.glyphicon.glyphicon-lock
+              input.form-control(type='password', name='password', placeholder='Password')
+            span.help-block
+            button.btn.btn-lg.btn-primary.btn-block(type='submit')
+              i.fa.fa-sign-in
+              |  Login
+      .row.onl_row-sm-offset-3
+        .col-xs-12.col-sm-3
+          p.onl_forgotPwd
+            a(href='#') Forgot password?
+        .col-xs-12.col-sm-3
+          label.checkbox.pull-left
+            input(type='checkbox', value='remember-me')
+            | Remember Me
+  script.
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })

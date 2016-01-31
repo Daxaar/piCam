@@ -3,10 +3,14 @@ html(lang="en")
   head
     title= title
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    script(src="https://code.jquery.com/jquery-1.12.0.min.js")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
   body
-    //- //How to I get access to the user in here for ALL requests?
-    if(locals.user)
-      div.welcome Hi #{user.name}
-    block content
+    .container
+      div.page-header
+        h1.logo Welcome to PiCam*p
+          a.pull-right.btn.btn-primary.btn-lg.active(href="/login") Login
+      block content
