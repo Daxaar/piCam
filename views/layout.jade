@@ -10,7 +10,9 @@ html(lang="en")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
   body
     .container
-      div.page-header
-        h1.logo Welcome to PiCam*p
-          a.pull-right.btn.btn-primary.btn-lg.active(href="/login") Login
+      block header
+        div.page-header
+          h1.logo Welcome to PiCam*p
+            if !user.name
+              a.pull-right.btn.btn-primary.btn-lg.active(href="/login") Login
       block content
