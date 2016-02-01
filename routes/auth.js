@@ -1,11 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var util = require('util');
-var bcrypt = require('bcrypt');
-var security = require('../auth/strategies');
-var liveStrategy = require('../auth/live')();
-var localStrategy = require('../auth/local')();
 
 router.post('/local',
             passport.authenticate('local'),
