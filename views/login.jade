@@ -1,4 +1,5 @@
 extends layout
+block header
 block content
 
   .container
@@ -7,15 +8,15 @@ block content
         | Login or 
         a(href='#') Sign up
       .row.onl_row-sm-offset-3.onl_socialButtons
-        .col-xs-2.col-sm-2
+        .col-xs-4.col-sm-2
           a.btn.btn-lg.btn-block.onl_btn-facebook(href='/auth/facebook', data-toggle='tooltip', data-placement='top', title='Facebook')
             i.fa.fa-facebook.fa-2x
             span.hidden-xs
-        .col-xs-2.col-sm-2
+        .col-xs-4.col-sm-2
           a.btn.btn-lg.btn-block.onl_btn-twitter(href='/auth/twitter', data-toggle='tooltip', data-placement='top', title='Twitter')
             i.fa.fa-twitter.fa-2x
             span.hidden-xs
-        .col-xs-2.col-sm-2
+        .col-xs-4.col-sm-2
           a.btn.btn-lg.btn-block.onl_btn-google-plus(href='/auth/google', data-toggle='tooltip', data-placement='top', title='Google Plus')
             i.fa.fa-google-plus.fa-2x
             span.hidden-xs
