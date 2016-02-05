@@ -8,7 +8,7 @@ block content
         | Login or 
         a(href='#') Sign up
       .row.onl_row-sm-offset-3.onl_socialButtons
-        .col-xs-4.col-sm-2
+        .col-xs-4.col-sm-2.col-sm-offset-3
           a.btn.btn-lg.btn-block.onl_btn-facebook(href='/auth/facebook', data-toggle='tooltip', data-placement='top', title='Facebook')
             i.fa.fa-facebook.fa-2x
             span.hidden-xs
@@ -21,11 +21,11 @@ block content
             i.fa.fa-google-plus.fa-2x
             span.hidden-xs
       .row.onl_row-sm-offset-3.onl_loginOr
-        .col-xs-12.col-sm-6
+        .col-xs-12.col-sm-6.col-sm-offset-3
           hr.onl_hrOr
           span.onl_spanOr or
       .row.onl_row-sm-offset-3
-        .col-xs-12.col-sm-6
+        .col-xs-12.col-sm-6.col-sm-offset-3
           form.onl_loginForm(action='/auth/local', autocomplete='off', method='POST')
             .input-group
               span.input-group-addon
