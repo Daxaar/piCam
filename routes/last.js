@@ -7,8 +7,14 @@ var fs = require('fs');
 router.use(security.ensureAuthenticated);
 
 router.get('/', function(req, res, next){
-  fs.stat('public/images/last.jpg',function (err, stats) {
-    res.render('last', {modified:stats.mtime});
+  fs.stat('public/images/last.jpg',(err, stats) => {
+    var modified = '';
+    if(err){
+      modified = err.code;
+    } else {
+      modified = stats.mtime;
+    }
+    res.render('last', {modified:modified});
   });
 });
 
